@@ -149,6 +149,12 @@ export default function TaskModal({ handleClose }) {
         setVal={setDateOfBirth}
         val={dateOfBirth}
       />
+            <InputTextField
+        label="E-mail Address"
+        placeholder="Enter Your E-mail Address "
+        setVal={setEmail}
+        val={email}
+      />
       <InputTextField
         label="Enter Father Name"
         placeholder="Enter Father Name"
@@ -167,12 +173,8 @@ export default function TaskModal({ handleClose }) {
         setVal={setAdddress}
         val={address}
       />
-      <InputTextField
-        label="E-mail Address"
-        placeholder="Enter Your E-mail Address "
-        setVal={setEmail}
-        val={email}
-      />
+
+
 
       {/* <span
         style={{
@@ -202,6 +204,7 @@ export default function TaskModal({ handleClose }) {
           width: "100%",
           height: 40,
           outline: "none",
+          marginTop:"8px"
         }}
         onChange={(e) => setColor(e.target.value)}
       >
@@ -238,6 +241,7 @@ export default function TaskModal({ handleClose }) {
 
 const Form = styled.div`
   margin-top: 30px;
+
 `;
 
 // const ColorBox = styled.div`
