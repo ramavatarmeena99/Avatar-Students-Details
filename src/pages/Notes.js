@@ -44,7 +44,7 @@ export default function Notes() {
 
   const deleteNotesHandler = (_item_values) => {
     const remainData = notesData?.filter(
-      (flt) => flt.studentName !== _item_values.studentName
+      (flt) => flt.todo !== _item_values.todo
     );
     dispatch(deleteNotesAction(remainData));
 

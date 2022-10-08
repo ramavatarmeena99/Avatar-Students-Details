@@ -24,7 +24,8 @@ export default function TaskModal({ handleClose }) {
   const [email, setEmail] = useState("");
   const [school, setSchool] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-
+  // const [alertMessegeForMobileNumber, setAlertMessegeForMobileNumber] =
+  //   useState(null);
   // const [message, setMessage] = useState("");
 
   // const [image, setImage] = useState("");
@@ -89,15 +90,12 @@ export default function TaskModal({ handleClose }) {
     //   return;
     // }
 
+
     if (!title) {
       dispatch(errorAction("Name is mandatory"));
       return;
     }
 
-    if (!number) {
-      dispatch(errorAction("Name is mandatory"));
-      return;
-    }
 
     if (isEdit) {
       let getEditabaleNotes = notesData?.filter(
@@ -143,7 +141,8 @@ export default function TaskModal({ handleClose }) {
         type="number"
         setVal={setNumber}
         val={number}
-      />
+        />
+
       <InputTextField
         label="Date Of Birth"
         type="date"

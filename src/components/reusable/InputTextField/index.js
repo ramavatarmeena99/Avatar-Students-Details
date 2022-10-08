@@ -9,7 +9,7 @@ export default function InputTextField({
   multiline,
   type,
   maxlength,
-  pattern
+  pattern,
 }) {
   return (
     <>
@@ -28,6 +28,7 @@ export default function InputTextField({
           value={val}
           maxlength={maxlength}
         pattern={pattern}
+
         />
       )}
     </>
