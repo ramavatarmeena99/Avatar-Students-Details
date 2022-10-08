@@ -13,4 +13,5 @@ const DIV = styled.div`
   top: 8px;
   right: 8px;
   cursor: pointer;
+  
 `;

@@ -17,7 +17,7 @@ export default function Alert({ children }) {
     setTimeout(() => {
       dispatch(errorAction(null));
     }, 4000);
-  }, []);
+  }, [error]);
 
   return (
     <>

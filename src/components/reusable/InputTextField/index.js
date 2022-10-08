@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Span from "../Span";
 
 export default function InputTextField({
   placeholder,
@@ -8,12 +9,11 @@ export default function InputTextField({
   label,
   multiline,
   type,
-  maxlength,
-  pattern,
+  required
 }) {
   return (
     <>
-      <Label>{label}</Label>
+      <Label>{label} {required && <Span style={{color:"red"}}>*</Span>} </Label>
       {multiline ? (
         <TextInput
           placeholder={placeholder}
@@ -26,9 +26,7 @@ export default function InputTextField({
           type={type}
           onChange={(e) => setVal(e.target.value)}
           value={val}
-          maxlength={maxlength}
-        pattern={pattern}
-
+                 
         />
       )}
     </>

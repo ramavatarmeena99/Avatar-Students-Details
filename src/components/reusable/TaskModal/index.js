@@ -29,6 +29,10 @@ const Modal = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 768px) {
+    width: 100%;
+    padding-top:20px;
+  }
 `;
 
 const Content = styled.div`
@@ -38,6 +42,6 @@ const Content = styled.div`
   padding: 10px;
   width: 400px;
   @media (max-width: 768px) {
-    width: 90%;
+    width: 90%;    
   }
 `;

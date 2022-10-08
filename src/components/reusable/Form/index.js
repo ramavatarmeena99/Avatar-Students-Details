@@ -4,7 +4,6 @@ import InputTextField from "../InputTextField";
 import Button from "../Button";
 import Title from "../Title";
 import Center from "../Center";
-// import validator from "validator";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createNotesAction,
@@ -17,18 +16,14 @@ import { colors } from "../../../data";
 
 export default function TaskModal({ handleClose }) {
   const [title, setTitle] = useState("");
-  const [number, setNumber] = useState(true);
+  const [number, setNumber] = useState("");
   const [fatherName, setFatherName] = useState("");
   const [motherName, setMotherName] = useState("");
   const [address, setAdddress] = useState("");
   const [email, setEmail] = useState("");
   const [school, setSchool] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-  // const [alertMessegeForMobileNumber, setAlertMessegeForMobileNumber] =
-  //   useState(null);
-  // const [message, setMessage] = useState("");
 
-  // const [image, setImage] = useState("");
   const [isEdit, seIsEdit] = useState(false);
   const [color, setColor] = useState("");
   const [checked, setChecked] = React.useState(false);
@@ -48,9 +43,9 @@ export default function TaskModal({ handleClose }) {
     setAdddress(editNotesData?.address);
     setEmail(editNotesData?.email);
     setSchool(editNotesData?.school);
-
     setColor(editNotesData?.color || "black");
     setChecked(editNotesData?.completed);
+    setNumber(editNotesData?.number);
 
     if (editNotesData?.id) {
       seIsEdit(true);
@@ -78,24 +73,36 @@ export default function TaskModal({ handleClose }) {
       updatedAt: myDate,
       color,
     };
-    // if (validator.isEmail(email)) {
-    //   setMessage("Thank you");
-    // } else {
-    //   setMessage("Please, enter valid Email!");
-    //   return
-    // }
 
     // if (isAlreadyTitleExist?.length > 0) {
     //   dispatch(errorAction("Title should not be same as existing title"));
     //   return;
     // }
+// regex email validation
 
+    if (!email || !email.includes("@") || !email.includes(".")) {
+      dispatch(errorAction("Please Enter valid Email"));
+      return
+    }
 
     if (!title) {
       dispatch(errorAction("Name is mandatory"));
       return;
     }
 
+    if (!number) {
+      dispatch(errorAction("Mobile Number is mandatory"));
+      return;
+    }
+    if (number.length !== 10) {
+      dispatch(errorAction("Please Enter 10 Digit Mobile Number"));
+      return;
+    }
+
+    if (!email) {
+      dispatch(errorAction("Email is mandatory"));
+      return;
+    }
 
     if (isEdit) {
       let getEditabaleNotes = notesData?.filter(
@@ -130,18 +137,20 @@ export default function TaskModal({ handleClose }) {
     <Form>
       <Alert />
       <InputTextField
+       required
         label="Enter Student Name"
         placeholder="Enter Student Name"
         setVal={setTitle}
         val={title}
       />
       <InputTextField
+       required
         label="Enter Your Mobile Number"
         placeholder="Enter Your Mobile Number"
         type="number"
         setVal={setNumber}
         val={number}
-        />
+      />
 
       <InputTextField
         label="Date Of Birth"
@@ -149,12 +158,14 @@ export default function TaskModal({ handleClose }) {
         setVal={setDateOfBirth}
         val={dateOfBirth}
       />
-            <InputTextField
+      <InputTextField
+        required
         label="E-mail Address"
         placeholder="Enter Your E-mail Address "
         setVal={setEmail}
         val={email}
       />
+ 
       <InputTextField
         label="Enter Father Name"
         placeholder="Enter Father Name"
@@ -174,16 +185,6 @@ export default function TaskModal({ handleClose }) {
         val={address}
       />
 
-
-
-      {/* <span
-        style={{
-          fontWeight: "bold",
-          color: "red"
-        }}
-      >
-        {message}
-      </span> */}
       {/* <ImageUpload
         label="Enter description"
         multiline={true}
@@ -204,7 +205,7 @@ export default function TaskModal({ handleClose }) {
           width: "100%",
           height: 40,
           outline: "none",
-          marginTop:"8px"
+          marginTop: "8px",
         }}
         onChange={(e) => setColor(e.target.value)}
       >
@@ -241,6 +242,7 @@ export default function TaskModal({ handleClose }) {
 
 const Form = styled.div`
   margin-top: 30px;
+
 
 `;
 
