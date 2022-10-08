@@ -103,42 +103,9 @@ export default function DetailsNotes() {
           </div>
         </StudentInfo>
         <br />
-        <StudentInfo>
-          <div style={{ width: "50%" }}>
-            <StudentDetails>Student E-Mail Id: </StudentDetails>
-          </div>
-          <div style={{ width: "80%" }}>
-            <Description>
-            {getMyValue(editNotesData.email)}
-              
-              </Description>
-          </div>
-        </StudentInfo>
-        <br />
-        <StudentInfo>
-          <div style={{ width: "50%" }}>
-            <StudentDetails>Student School : </StudentDetails>
-          </div>
-          <div style={{ width: "80%" }}>
-            <Description>
-            {getMyValue(editNotesData.school)}
-              
-              </Description>
-          </div>
-        </StudentInfo>
-        <br />
+   
 
-        <StudentInfo>
-          <div style={{ width: "50%" }}>
-            <StudentDetails>Student Hobbies : </StudentDetails>
-          </div>
-          <div style={{ width: "80%" }}>
-            <Description>
-            {getMyValue(editNotesData.hobbies)}
 
-              </Description>
-          </div>
-        </StudentInfo>
 
         <br />
         <SubTitle>Created At :{editNotesData.createdAt}</SubTitle>
