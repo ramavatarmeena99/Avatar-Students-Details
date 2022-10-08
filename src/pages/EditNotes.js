@@ -7,7 +7,7 @@ export default function EditNotes() {
   return (
     <Main>
       <Container>
-        <Title>Edit Your Note</Title>
+        <Title>Edit Student Profile</Title>
         <Form />
       </Container>
     </Main>

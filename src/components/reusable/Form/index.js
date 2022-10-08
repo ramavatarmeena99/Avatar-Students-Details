@@ -4,6 +4,7 @@ import InputTextField from "../InputTextField";
 import Button from "../Button";
 import Title from "../Title";
 import Center from "../Center";
+// import validator from "validator";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createNotesAction,
@@ -16,12 +17,15 @@ import { colors } from "../../../data";
 
 export default function TaskModal({ handleClose }) {
   const [title, setTitle] = useState("");
+  const [number, setNumber] = useState(true);
   const [fatherName, setFatherName] = useState("");
   const [motherName, setMotherName] = useState("");
   const [address, setAdddress] = useState("");
   const [email, setEmail] = useState("");
   const [school, setSchool] = useState("");
-  const [hobbies, setHobbies] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+
+  // const [message, setMessage] = useState("");
 
   // const [image, setImage] = useState("");
   const [isEdit, seIsEdit] = useState(false);
@@ -44,7 +48,7 @@ export default function TaskModal({ handleClose }) {
     setEmail(editNotesData?.email);
     setSchool(editNotesData?.school);
 
-    setColor(editNotesData?.color || "red");
+    setColor(editNotesData?.color || "black");
     setChecked(editNotesData?.completed);
 
     if (editNotesData?.id) {
@@ -64,16 +68,21 @@ export default function TaskModal({ handleClose }) {
       motherName,
       address,
       email,
-      hobbies,
       school,
+      number,
+      dateOfBirth,
       completed: false,
       // image,
       createdAt: myDate,
       updatedAt: myDate,
       color,
     };
-
-   
+    // if (validator.isEmail(email)) {
+    //   setMessage("Thank you");
+    // } else {
+    //   setMessage("Please, enter valid Email!");
+    //   return
+    // }
 
     // if (isAlreadyTitleExist?.length > 0) {
     //   dispatch(errorAction("Title should not be same as existing title"));
@@ -84,22 +93,28 @@ export default function TaskModal({ handleClose }) {
       dispatch(errorAction("Name is mandatory"));
       return;
     }
-   
+
+    if (!number) {
+      dispatch(errorAction("Name is mandatory"));
+      return;
+    }
+
     if (isEdit) {
       let getEditabaleNotes = notesData?.filter(
         (flt) => flt.id === editNotesData.id
       )[0];
 
       getEditabaleNotes.todo = title;
+      getEditabaleNotes.number = number;
       getEditabaleNotes.updatedAt = myDate;
       getEditabaleNotes.fatherName = fatherName;
       getEditabaleNotes.motherName = motherName;
       getEditabaleNotes.address = address;
       getEditabaleNotes.email = email;
       getEditabaleNotes.school = school;
-      getEditabaleNotes.hobbies = hobbies;
       getEditabaleNotes.completed = checked;
       getEditabaleNotes.color = color;
+      getEditabaleNotes.dateOfBirth = dateOfBirth;
 
       dispatch(finalEditNotesAction(notesData));
       dispatch(errorAction("Succesfully Student Profile updated"));
@@ -123,47 +138,51 @@ export default function TaskModal({ handleClose }) {
         val={title}
       />
       <InputTextField
+        label="Enter Your Mobile Number"
+        placeholder="Enter Your Mobile Number"
+        type="number"
+        setVal={setNumber}
+        val={number}
+      />
+      <InputTextField
+        label="Date Of Birth"
+        type="date"
+        setVal={setDateOfBirth}
+        val={dateOfBirth}
+      />
+      <InputTextField
         label="Enter Father Name"
-
         placeholder="Enter Father Name"
         setVal={setFatherName}
         val={fatherName}
       />
       <InputTextField
         label="Enter Mother Name"
-
         placeholder="Enter Mother Name"
         setVal={setMotherName}
         val={motherName}
       />
       <InputTextField
         label="Address"
-
         placeholder="Enter Your Address "
         setVal={setAdddress}
         val={address}
       />
       <InputTextField
         label="E-mail Address"
-
         placeholder="Enter Your E-mail Address "
         setVal={setEmail}
         val={email}
       />
-      <InputTextField
-        label="School Name"
 
-        placeholder="Enter School Name "
-        setVal={setSchool}
-        val={school}
-      />
-      <InputTextField
-        label="Hobbies"
-        multiline={true}
-        placeholder="Enter Hobbies "
-        setVal={setHobbies}
-        val={hobbies}
-      />
+      {/* <span
+        style={{
+          fontWeight: "bold",
+          color: "red"
+        }}
+      >
+        {message}
+      </span> */}
       {/* <ImageUpload
         label="Enter description"
         multiline={true}

@@ -16,14 +16,51 @@ export default function DetailsNotes() {
   return (
     <Main>
       <Container>
-        <h1>Student Profile: </h1>
+        <h1>Student Profile </h1>
         <br />
         <StudentInfo>
           <div style={{ width: "50%" }}>
-            <StudentDetails>Student Name: </StudentDetails>
+            <StudentDetails>Student Name </StudentDetails>
+          </div>
+          
+          <div style={{ width: "80%" }}>
+          <Title>{capitalizeFirstLetter(editNotesData.todo)} </Title>
+          </div>
+        </StudentInfo>
+        <br />
+        <StudentInfo>
+          <div style={{ width: "50%" }}>
+            <StudentDetails> Mobile Number: </StudentDetails>
           </div>
           <div style={{ width: "80%" }}>
-            <Title>{capitalizeFirstLetter(editNotesData.todo)} </Title>
+          <Description>
+            {getMyValue(editNotesData.number)}
+              
+              </Description>
+          </div>
+        </StudentInfo>
+        <br />
+        <StudentInfo>
+          <div style={{ width: "50%" }}>
+            <StudentDetails> Date Of Birth : </StudentDetails>
+          </div>
+          <div style={{ width: "80%" }}>
+          <Description>
+            {getMyValue(editNotesData.dateOfBirth)}
+              
+              </Description>
+          </div>
+        </StudentInfo>
+        <br/>
+        <StudentInfo>
+          <div style={{ width: "50%" }}>
+            <StudentDetails>Student E-Mail Id: </StudentDetails>
+          </div>
+          <div style={{ width: "80%" }}>
+            <Description>
+            {getMyValue(editNotesData.email)}
+              
+              </Description>
           </div>
         </StudentInfo>
         <br />

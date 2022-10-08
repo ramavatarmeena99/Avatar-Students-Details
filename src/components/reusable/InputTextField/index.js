@@ -7,6 +7,9 @@ export default function InputTextField({
   val,
   label,
   multiline,
+  type,
+  maxlength,
+  pattern
 }) {
   return (
     <>
@@ -20,8 +23,11 @@ export default function InputTextField({
       ) : (
         <Input
           placeholder={placeholder}
+          type={type}
           onChange={(e) => setVal(e.target.value)}
           value={val}
+          maxlength={maxlength}
+        pattern={pattern}
         />
       )}
     </>

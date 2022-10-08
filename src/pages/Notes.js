@@ -23,10 +23,7 @@ import Span from "../components/reusable/Span";
 import Alert from "../components/reusable/Alert";
 import { errorAction } from "../redux/action/errorActions";
 
-function capitalizeFirstLetter(string) {
-  return string
-  // charAt(0).toUpperCase() + string.slice(1);
-}
+
 
 export default function Notes() {
   const navigate = useNavigate();
@@ -92,21 +89,13 @@ export default function Notes() {
           return (
             <Box color={item.color} key={index}>
               <div onClick={() => redirectToDetails(item)}>
-                <p>Student Name:</p>
-                <Title style={{ width: "95%" }}>
-                  {capitalizeFirstLetter(
-                    item.studentName?.length > 30
-                      ? item.studentName?.slice(0, 30) + "..."
-                      : item.studentName
-                  )}
-                </Title>
-                <Description>
-                  {capitalizeFirstLetter(
-                    item.fatherName?.length > 180
-                      ? item.fatherName?.slice(0, 180) + "..."
-                      : item.fatherName
-                  )}
-                </Description>
+
+              <p>Student Name:</p>
+                <Title style={{ width: "95%" }}>{item.todo}</Title>
+
+                <p> Mobile Number:</p>
+
+                <Description>{item.number}</Description>
               </div>
               <Flex justifyContent="space-between">
                 <SubTitle>Created At :{item.createdAt}</SubTitle>
