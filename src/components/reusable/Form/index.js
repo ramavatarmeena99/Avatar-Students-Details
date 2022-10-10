@@ -80,10 +80,6 @@ export default function TaskModal({ handleClose }) {
     // }
 // regex email validation
 
-    if (!email || !email.includes("@") || !email.includes(".")) {
-      dispatch(errorAction("Please Enter valid Email"));
-      return
-    }
 
     if (!title) {
       dispatch(errorAction("Name is mandatory"));
@@ -102,6 +98,10 @@ export default function TaskModal({ handleClose }) {
     if (!email) {
       dispatch(errorAction("Email is mandatory"));
       return;
+    }
+    if (!email || !email.includes("@") || !email.includes(".")) {
+      dispatch(errorAction("Please Enter valid Email"));
+      return
     }
 
     if (isEdit) {
@@ -227,7 +227,7 @@ export default function TaskModal({ handleClose }) {
               defaultChecked={checked}
               onChange={() => setChecked(!checked)}
             />
-            Do you complete this note
+            Do you complete student profile
           </label>
         </div>
       )}
@@ -245,8 +245,3 @@ const Form = styled.div`
 
 
 `;
-
-// const ColorBox = styled.div`
-//   width: 40px;
-//   height: 40px;
-// `;
