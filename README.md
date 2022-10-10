@@ -1,4 +1,4 @@
-<!-- ![](https://github.com/ShravanMeena/sweet-alert-in-javascript-/blob/main/sweeet%20alert.png?raw=true) -->
+![](https://github.com/ramavatarmeena99/Avatar-Students-Details/blob/main/src/assets/demo.png?raw=true)
 ## About Project
 To-do application for keeping to-do records of past, present and future.
 
