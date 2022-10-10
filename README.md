@@ -4,7 +4,7 @@ To-do application for keeping to-do records of past, present and future.
 
 
 ## Features
--Add new student profile .
+-Add new student profile.
 -Edit existing student profile 
 -Delete student profile.
 -View student profile details.
